@@ -130,17 +130,6 @@ function initMap() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 function mapStyle() {
 
 	// Sets the Style of the Map
@@ -219,12 +208,6 @@ function mapStyle() {
 }
 
 
-// Set Locations on Screen
-function viewModel() {
-
-
-
-}
 
 
 
@@ -242,12 +225,17 @@ var model = {
 };
 
 
-var viewModel = {
+var ViewModel = function() {
 
-
-
+	this.name = ko.observable('Ergebnisse:'),
+	this.locationsArray = ko.observableArray(),
+	
+   	locationsArray.push(model.locations[1].title);
+   	locationsArray.push(model.locations[2].title);
+   	locationsArray.push(model.locations[3].title);
 
 }
 
 
 
+ko.applyBindings(new ViewModel())

@@ -43,4 +43,8 @@ input {
 	left: 362px;
 	position: absolute;
 	right: 0px;
-			}
+}
+
+#result-p {
+	padding-top: 1em;
+}
