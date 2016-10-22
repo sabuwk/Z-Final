@@ -7,7 +7,21 @@ var markers = [];
 // Initializes and styles the Map
 function initMap() {
 
-	var styles = [
+	map = new google.maps.Map(document.getElementById('map'), {
+
+	center: {lat: 52.47011, lng: 13.441893},
+	zoom: 13,
+	mapTypeControl: false
+	});
+
+	mapStyle();
+}
+
+
+function mapStyle() {
+
+	// Sets the Style of the Map
+	var styleArray = [
 
 	{
 	"featureType":"administrative",
@@ -75,15 +89,8 @@ function initMap() {
 		{"color":"#5f94ff"},
 		{"lightness":26},
 		{"gamma":5.86
-	}]}]
+	}]}];
 
-	map = new google.maps.Map(document.getElementById('map'), {
+	map.setOptions({styles: styleArray});
 
-	center: {lat: 52.47011, lng: 13.441893},
-	zoom: 13,
-	styles: styles,
-	mapTypeControl: false
-	});
 }
-
-
