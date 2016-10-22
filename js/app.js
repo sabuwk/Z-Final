@@ -1,4 +1,5 @@
 var map;
+var largeInfoWindow;
 
 //Array für alle Marker
 var markers = [];
@@ -16,21 +17,14 @@ function initMap() {
 
 	mapStyle();
 
+	var locations = model.locations;	
+	model.powerhorse();	
+	
+	largeInfoWindow = new google.maps.InfoWindow();
+	var bounds = new google.maps.LatLngBounds();
 
-	var locations = [
-
-
-		{title: 'Kimchi Princess', location: {lat: 52.498531, lng: 13.426031}},
-		{title: 'Tante Biggie', location: {lat: 52.50997, lng: 13.455393}},
-		{title: 'Roamers', location: {lat: 52.48553, lng: 13.429323}}
-
-		];				
-
-		var largeInfoWindow = new google.maps.InfoWindow();
-		var bounds = new google.maps.LatLngBounds();
-
-		var defaultIcon = makeMarkerIcon('0091ff');
-		var highlightedIcon = makeMarkerIcon('FFFF24');
+	var defaultIcon = makeMarkerIcon('0091ff');
+	var highlightedIcon = makeMarkerIcon('FFFF24');
 
 		// Nimmt das Location Array um das Marker Array zu befüllen
 		for (var i = 0; i < locations.length; i++) {
@@ -220,7 +214,12 @@ var model = {
 	{title: 'Tante Biggie', location: {lat: 52.50997, lng: 13.455393}},
 	{title: 'Roamers', location: {lat: 52.48553, lng: 13.429323}}
 
-	]
+	],
+
+
+	powerhorse: function() {
+		console.log("huh");
+	}
 
 };
 
@@ -236,6 +235,14 @@ var ViewModel = function() {
 	// Diese for-Schleife füllt das Loc-Array (oben) aus. 
 	for (var z = 0; z < model.locations.length; z++) {
 		this.loc.push(model.locations[z]);
+	}
+
+
+	onClick = function() {
+
+		console.log("FUCK ME");
+		this.loc.infowindow.open(map, location.marker);
+		
 	}
 
 
