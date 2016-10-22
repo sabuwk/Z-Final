@@ -1,0 +1,45 @@
+html, body {
+	
+	font-family: 'Open Sans', sans-serif;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+h1 {
+
+	font-family: 'Teko', sans-serif;
+	font-size: 3em;
+
+}
+
+
+input {
+
+	font-family: 'Open Sans', sans-serif; 
+	color: red; 
+	font-size: 2em; 
+	border: 2px dotted red;
+	background-color: #FFFFFF; 
+	height: 1em; 
+	width: 12em; 
+	padding: 3px;
+
+}
+
+.rest-nav {
+
+	background-color: grey;
+
+}
+
+
+#map {
+
+	bottom: 0px;
+	height: 100%;
+	width: 100%;
+	left: 362px;
+	position: absolute;
+	right: 0px;
+			}
