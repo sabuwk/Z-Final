@@ -227,14 +227,18 @@ var model = {
 
 var ViewModel = function() {
 
-	this.name = ko.observable('Ergebnisse:'),
-	this.locationsArray = ko.observableArray(),
-	
-   	locationsArray.push(model.locations[1].title);
-   	locationsArray.push(model.locations[2].title);
-   	locationsArray.push(model.locations[3].title);
+	// Füllt einfach das "Ergebnisse" aus
+	this.name = ko.observable('Ergebnisse:');
 
-}
+	// Das Loc-Array wird in der For-Loop unten mit den Locations aus model.locations gefüllt und dann werden die titles in index.html hinzugefügt
+	this.loc = ko.observableArray();
+
+	// Diese for-Schleife füllt das Loc-Array (oben) aus. 
+	for (var z = 0; z < model.locations.length; z++) {
+		this.loc.push(model.locations[z]);
+	}
+
+};
 
 
 

@@ -25,13 +25,21 @@
 </head>
 <body>
 	<div class="col-md-3 col-xs-4 rest-nav">
+		
 		<h1>Hungrig in Berlin?</h1>
 		<input placeholder="Restaurant suchen!" type="search">
 		<p id="result-p" data-bind="text: name"></p>
 
+		<ul id="buttons" data-bind="foreach: loc">
+
+			<li data-bind="text: title"></li>
+
+		</ul>
 		
 
-		<ul id="restaurant-berlin" data-bind="text: locations"></ul>
+		<!--<ul id="restaurant-berlin" data-bind="text: locations"></ul>-->
+
+
 
 	</div>
 
