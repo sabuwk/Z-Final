@@ -238,6 +238,8 @@ var ViewModel = function() {
 		this.loc.push(model.locations[z]);
 	}
 
+
+
 };
 
 
