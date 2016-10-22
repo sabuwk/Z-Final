@@ -23,7 +23,7 @@ input {
 	border: 1px solid grey;
 	background-color: #FFFFFF; 
 	height: 3em; 
-	width: 20em; 
+	width: 80%; 
 	padding: 3px;
 
 }
@@ -71,4 +71,10 @@ li {
 	width: 80%;
 	background-color: lightgreen; 
 
+}
+
+
+.all {
+
+	margin-left: 1em;
 }
