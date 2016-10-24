@@ -260,7 +260,6 @@ var ViewModel = function() {
 	onClick = function() {
 
 		console.log("FUCK ME");
-		largeInfoWindowx = new google.maps.InfoWindow();
 
 		var markerclicked;
 
@@ -278,7 +277,7 @@ var ViewModel = function() {
 		}
 
 
-		populateInfoWindow(markerclicked, largeInfoWindowx);
+		populateInfoWindow(markerclicked, largeInfoWindow);
 
 
 		
