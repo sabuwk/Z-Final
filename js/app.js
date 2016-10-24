@@ -217,6 +217,7 @@ function fillLocation(locationsx) {
 	}
 
 	console.log(globlocation);
+	//console.log("ViewModel Location: " + ViewModel.loc);
 }
 
 
@@ -259,7 +260,11 @@ var ViewModel = function() {
 	onClick = function() {
 
 		console.log("FUCK ME");
-		this.loc.infowindow.open(map, location.marker);
+		largeInfoWindowx = new google.maps.InfoWindow();
+
+		populateInfoWindow(markers[1], largeInfoWindowx);
+
+
 		
 	}
 
