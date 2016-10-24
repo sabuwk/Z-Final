@@ -1,9 +1,12 @@
 var map;
 var largeInfoWindow;
 
+
 //Array für alle Marker
 var markers = [];
 
+
+var globlocation = [];
 
 // Initializes and the map and calls a function to style it
 function initMap() {
@@ -68,7 +71,7 @@ function initMap() {
 
 		}
 
-		
+		fillLocation(locations);
 		showListings();
 		// document.getElementById('show-listings').addEventListener('click', showListings);
 		// document.getElementById('hide-listings').addEventListener('click', hideListings);
@@ -199,6 +202,21 @@ function mapStyle() {
 
 	map.setOptions({styles: styleArray});
 
+}
+
+// Pushes the locations into global scope
+function fillLocation(locationsx) {
+
+	console.log("fillLocation");
+
+
+	for(var i = 0; i < locationsx.length; i++) {
+
+		globlocation.push(locationsx[i]);
+
+	}
+
+	console.log(globlocation);
 }
 
 
