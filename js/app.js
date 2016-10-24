@@ -257,14 +257,12 @@ var ViewModel = function() {
 	}
 
 
+	// onClick Function wird ausgelöst, wenn jemand auf das Nav-Bedienemelemt klickt.
 	onClick = function() {
-
-		console.log("FUCK ME");
 
 		var markerclicked;
 
 		console.log(this);
-
 
 		for(var i = 0; i < markers.length; i++) {
 			if(this.title == markers[i].title) {
@@ -272,21 +270,13 @@ var ViewModel = function() {
 				markerclicked = markers[i];
 
 			}
-
-
 		}
-
 
 		populateInfoWindow(markerclicked, largeInfoWindow);
 
-
-		
 	}
 
-
-
 };
-
 
 
 ko.applyBindings(new ViewModel())

@@ -70,6 +70,7 @@ li {
 	border: solid 1px grey;
 	width: 80%;
 	background-color: lightgreen; 
+	cursor: pointer;
 
 }
 
