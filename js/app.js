@@ -1,6 +1,6 @@
 var map;
 var largeInfoWindow;
-
+debugger;
 
 //Array für alle Marker
 var markers = [];
@@ -237,7 +237,6 @@ var model = {
 
 	],
 
-
 	powerhorse: function() {
 		console.log("huh");
 	}
@@ -247,8 +246,13 @@ var model = {
 
 var ViewModel = function() {
 
+
+	this.filterData = ko.observable();
+	
+	var title;
+
 	// Füllt einfach das "Ergebnisse" aus
-	this.name = ko.observable('Ergebnisse:');
+	this.name = ko.observable('Ergebnisse: ');
 
 	// Das Loc-Array wird in der For-Loop unten mit den Locations aus model.locations gefüllt und dann werden die titles in index.html hinzugefügt
 	this.loc = ko.observableArray();
@@ -262,9 +266,10 @@ var ViewModel = function() {
 	// onClick Function wird ausgelöst, wenn jemand auf das Nav-Bedienemelemt klickt.
 	onClick = function() {
 
+		console.log("FUCK JETZT BITTE!")
 		var markerclicked;
 
-		console.log(this);
+
 
 		for(var i = 0; i < markers.length; i++) {
 			if(this.title == markers[i].title) {
@@ -277,6 +282,17 @@ var ViewModel = function() {
 		populateInfoWindow(markerclicked, largeInfoWindow);
 
 	}
+
+
+	runSearch = function() {
+
+
+
+		console.log("rundsearch");
+
+
+	}
+
 
 };
 

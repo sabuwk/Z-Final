@@ -29,7 +29,7 @@
 	<div class="col-md-3 col-xs-4 rest-nav all">
 
 		<h1>Hungrig in Berlin?</h1>
-		<input placeholder="Restaurant suchen!" type="search">
+		<input placeholder="Restaurant suchen!" type="search" data-bind="textInput: filterData, valueUpdate: 'input'">
 		<p id="result-p" data-bind="text: name"></p>
 	</div>
 </div>
