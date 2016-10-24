@@ -262,7 +262,23 @@ var ViewModel = function() {
 		console.log("FUCK ME");
 		largeInfoWindowx = new google.maps.InfoWindow();
 
-		populateInfoWindow(markers[1], largeInfoWindowx);
+		var markerclicked;
+
+		console.log(this);
+
+
+		for(var i = 0; i < markers.length; i++) {
+			if(this.title == markers[i].title) {
+
+				markerclicked = markers[i];
+
+			}
+
+
+		}
+
+
+		populateInfoWindow(markerclicked, largeInfoWindowx);
 
 
 		
