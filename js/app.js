@@ -231,7 +231,9 @@ var model = {
 
 	{title: 'Kimchi Princess', location: {lat: 52.498531, lng: 13.426031}},
 	{title: 'Tante Biggie', location: {lat: 52.50997, lng: 13.455393}},
-	{title: 'Roamers', location: {lat: 52.48553, lng: 13.429323}}
+	{title: 'Roamers', location: {lat: 52.48553, lng: 13.429323}},
+	{title: "FamDang", location: {lat: 52.529921, lng: 13.400617}},
+	{title: "Burgermister", location: {lat: 52.499511, lng: 13.419251}}
 
 	],
 
