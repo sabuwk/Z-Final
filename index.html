@@ -36,6 +36,7 @@
 <div class="row">
 	<div class="col-md-3 col-xs-4 all">
 		<ul id="buttons" data-bind="foreach: loc">
+			<div data-bind="if: wahl"></div> <!-- IF WAHL -->
 			<li data-bind="text: title, click: onClick"></li>
 		</ul>
 		<button data-bind="click: runSearch">Search!</button>

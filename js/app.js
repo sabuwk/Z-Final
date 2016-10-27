@@ -225,14 +225,14 @@ function fillLocation(locationsx) {
 
 var model = {
 
-	
+	//WAHL
 	locations: [
 
-	{title: 'Kimchi Princess', location: {lat: 52.498531, lng: 13.426031}},
-	{title: 'Tante Biggie', location: {lat: 52.50997, lng: 13.455393}},
-	{title: 'Roamers', location: {lat: 52.48553, lng: 13.429323}},
-	{title: "FamDang", location: {lat: 52.529921, lng: 13.400617}},
-	{title: "Burgermister", location: {lat: 52.499511, lng: 13.419251}}
+	{title: 'Kimchi Princess', wahl: true, location: {lat: 52.498531, lng: 13.426031}},
+	{title: 'Tante Biggie', wahl: false, location: {lat: 52.50997, lng: 13.455393}},
+	{title: 'Roamers', wahl: true, location: {lat: 52.48553, lng: 13.429323}},
+	{title: "FamDang",  wahl: true, location: {lat: 52.529921, lng: 13.400617}},
+	{title: "Burgermister", wahl: true, location: {lat: 52.499511, lng: 13.419251}}
 
 	],
 
@@ -254,8 +254,6 @@ var ViewModel = function() {
 
 	// Das Loc-Array wird in der For-Loop unten mit den Locations aus model.locations gefüllt und dann werden die titles in index.html hinzugefügt
 	this.loc = ko.observableArray();
-
-	this.faveNum = ko.observable(4);
 
 
 	// Diese for-Schleife füllt das Loc-Array (oben) aus. 
@@ -283,8 +281,10 @@ var ViewModel = function() {
 
 	runSearch = function() {
 
-		console.log("runSearch");
-		console.log(self.filterData());
+		model.locations[2].wahl = false;
+
+
+
 
 		// Iteriert über alle Locations
 		for(var i = 0; i < self.loc().length; i++) {
