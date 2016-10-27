@@ -1,6 +1,5 @@
 var map;
 var largeInfoWindow;
-debugger;
 
 //Array für alle Marker
 var markers = [];
@@ -246,10 +245,9 @@ var model = {
 
 var ViewModel = function() {
 
+	var self = this;
 
-	this.filterData = ko.observable();
-	
-	var title;
+	this.filterData = ko.observable("Search for Restaurant");
 
 	// Füllt einfach das "Ergebnisse" aus
 	this.name = ko.observable('Ergebnisse: ');
@@ -257,18 +255,22 @@ var ViewModel = function() {
 	// Das Loc-Array wird in der For-Loop unten mit den Locations aus model.locations gefüllt und dann werden die titles in index.html hinzugefügt
 	this.loc = ko.observableArray();
 
+	this.faveNum = ko.observable(4);
+
+
 	// Diese for-Schleife füllt das Loc-Array (oben) aus. 
 	for (var z = 0; z < model.locations.length; z++) {
 		this.loc.push(model.locations[z]);
 	}
 
-
 	// onClick Function wird ausgelöst, wenn jemand auf das Nav-Bedienemelemt klickt.
 	onClick = function() {
 
-		console.log("FUCK JETZT BITTE!")
 		var markerclicked;
 
+		//JUST AN EXAMPLE!
+
+		self.name(self.filterData());
 
 
 		for(var i = 0; i < markers.length; i++) {
@@ -283,13 +285,17 @@ var ViewModel = function() {
 
 	}
 
-
 	runSearch = function() {
 
+		console.log("runSearch");
+		console.log(self.filterData());
+
+		for(var i = 0; i < self.loc().length; i++) {
 
 
-		console.log("rundsearch");
+			console.log(self.loc()[i]);
 
+		}
 
 	}
 
