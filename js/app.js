@@ -268,12 +268,8 @@ var ViewModel = function() {
 
 		var markerclicked;
 
-		//JUST AN EXAMPLE!
-
-		self.name(self.filterData());
-
-
 		for(var i = 0; i < markers.length; i++) {
+		
 			if(this.title == markers[i].title) {
 
 				markerclicked = markers[i];
@@ -299,7 +295,6 @@ var ViewModel = function() {
 			if(markers[i].title == self.filterData()) {
 				console.log("TRUE");
 				markers[i].setMap(null);
-				self.loc().pop();
 
 			}
 			
