@@ -290,12 +290,27 @@ var ViewModel = function() {
 		console.log("runSearch");
 		console.log(self.filterData());
 
+		// Iteriert über alle Locations
 		for(var i = 0; i < self.loc().length; i++) {
 
+			console.log(markers[i].title);
 
-			console.log(self.loc()[i]);
+			// wenn der Marker Title True mit der Eingabe ist, wird er deaktiviert
+			if(markers[i].title == self.filterData()) {
+				console.log("TRUE");
+				markers[i].setMap(null);
+				self.loc().pop();
 
+			}
+			
 		}
+
+	}
+
+
+	disableLocations = function(aktuelleLocation) {
+
+
 
 	}
 
