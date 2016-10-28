@@ -276,12 +276,12 @@ var ViewModel = function() {
 		}
 
 		populateInfoWindow(markerclicked, largeInfoWindow);
+		console.log(this);
+		runSearchClick(this)
 
 	}
 
 	runSearch = function() {
-
-		model.locations[2].wahl = false;
 
 
 
@@ -293,6 +293,26 @@ var ViewModel = function() {
 
 			// wenn der Marker Title True mit der Eingabe ist, wird er deaktiviert
 			if(markers[i].title == self.filterData()) {
+				for(var x = 0; x < self.loc().length; x++) {
+					markers[x].setMap(null);
+				}
+				markers[i].setMap(map);
+			}
+			
+		}
+
+	}
+
+
+	runSearchClick = function(markerx) {
+
+		// Iteriert über alle Locations
+		for(var i = 0; i < self.loc().length; i++) {
+
+			console.log(markers[i].title);
+
+			// wenn der Marker Title True mit der Eingabe ist, wird er deaktiviert
+			if(markers[i].title == markerx.title) {
 				for(var x = 0; x < self.loc().length; x++) {
 					markers[x].setMap(null);
 				}
