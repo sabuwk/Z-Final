@@ -297,6 +297,7 @@ var ViewModel = function() {
 					markers[x].setMap(null);
 				}
 				markers[i].setMap(map);
+				populateInfoWindow(markers[i], largeInfoWindow);
 			}
 			
 		}
