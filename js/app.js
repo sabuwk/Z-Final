@@ -291,23 +291,12 @@ var ViewModel = function() {
 
 			console.log(markers[i].title);
 
-			// wenn der Marker Title True mit der Eingabe ist, springt es in die if Schleife
+			// wenn der Marker Title True mit der Eingabe ist, wird er deaktiviert
 			if(markers[i].title == self.filterData()) {
-				console.log("TRUE");
-				
-				//For Loop Deaktiviert alle Marker auf der Map!
 				for(var x = 0; x < self.loc().length; x++) {
 					markers[x].setMap(null);
 				}
-			// Aktiviert den richtigen Marker auf der Map!
-			markers[i].setMap(map);
-=======
-			// wenn der Marker Title True mit der Eingabe ist, wird er deaktiviert
-			if(markers[i].title == self.filterData()) {
-				console.log("TRUE");
-				markers[i].setMap(null);
-
->>>>>>> origin/master
+				markers[i].setMap(map);
 			}
 			
 		}
