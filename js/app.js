@@ -228,11 +228,11 @@ var model = {
 	//WAHL
 	locations: [
 
-	{title: 'Kimchi Princess', wahl: true, location: {lat: 52.498531, lng: 13.426031}},
-	{title: 'Tante Biggie', wahl: false, location: {lat: 52.50997, lng: 13.455393}},
-	{title: 'Roamers', wahl: true, location: {lat: 52.48553, lng: 13.429323}},
-	{title: "FamDang",  wahl: true, location: {lat: 52.529921, lng: 13.400617}},
-	{title: "Burgermister", wahl: true, location: {lat: 52.499511, lng: 13.419251}}
+	{title: 'Brandenburger Tor', location: {lat: 52.516270, lng: 13.377703}},
+	{title: 'Berliner Fernsehturm', location: {lat: 52.520816, lng: 13.409548}},
+	{title: 'Siegessäule', location: {lat: 52.514547, lng: 13.350181}},
+	{title: "Berghain", location: {lat: 52.511100, lng: 13.443091}},
+	{title: "Museum für Naturkunde", location: {lat: 52.530612, lng: 13.380173}}
 
 	],
 
@@ -247,7 +247,7 @@ var ViewModel = function() {
 
 	var self = this;
 
-	this.filterData = ko.observable("Search for Restaurant");
+	this.filterData = ko.observable("Sehenswürdigkeit suchen!");
 
 	// Füllt einfach das "Ergebnisse" aus
 	this.name = ko.observable('Ergebnisse: ');
