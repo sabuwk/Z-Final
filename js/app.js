@@ -283,9 +283,6 @@ var ViewModel = function() {
 
 	runSearch = function() {
 
-
-
-
 		// Iteriert über alle Locations
 		for(var i = 0; i < self.loc().length; i++) {
 
@@ -299,9 +296,7 @@ var ViewModel = function() {
 				markers[i].setMap(map);
 				populateInfoWindow(markers[i], largeInfoWindow);
 			}
-			
 		}
-
 	}
 
 	// gleiches wie runSearch, wir allerdings von onClick aufgerufen bei Druck auf die buttons
@@ -319,20 +314,14 @@ var ViewModel = function() {
 				}
 				markers[i].setMap(map);
 			}
-			
 		}
-
 	}
 
 
 	disableLocations = function(aktuelleLocation) {
 
 
-
 	}
-
-
 };
-
 
 ko.applyBindings(new ViewModel())
