@@ -256,6 +256,11 @@ var ViewModel = function() {
 	this.loc = ko.observableArray();
 
 
+
+	this.wikiTitle = ko.observable("Wikipedia Info");
+	this.wikiExtract = ko.observable("");
+
+
 	// Diese for-Schleife füllt das Loc-Array (oben) aus. 
 	for (var z = 0; z < model.locations.length; z++) {
 		this.loc.push(model.locations[z]);
@@ -276,8 +281,9 @@ var ViewModel = function() {
 		}
 
 		populateInfoWindow(markerclicked, largeInfoWindow);
-		console.log(this);
+		console.log("What is this? " + this.title);
 		runSearchClick(this)
+		showWikipedia(this.title);
 
 	}
 
@@ -316,6 +322,32 @@ var ViewModel = function() {
 			}
 		}
 	}
+
+	//shows the wikipedia info in the dom	
+	showWikipedia = function(infoLocation) {
+
+		var wikipedia = "https://de.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=" +infoLocation; 		
+		console.log(wikipedia);
+
+		var result = '';
+		$.ajax({
+        
+            url: wikipedia,
+            dataType: "jsonp"
+        }).done(function (data) {
+
+        	var pages = data.query.pages;
+    	    for(var id in pages) {
+        		result = pages[id].extract;
+        		console.log("RESULT RESULT: " +result);
+        		self.wikiExtract("Info: " + result);
+       		}
+
+    	})
+
+
+
+    }    
 
 
 	disableLocations = function(aktuelleLocation) {
