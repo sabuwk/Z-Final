@@ -291,6 +291,7 @@ var ViewModel = function() {
 
 			console.log(markers[i].title);
 
+<<<<<<< HEAD
 			// wenn der Marker Title True mit der Eingabe ist, springt es in die if Schleife
 			if(markers[i].title == self.filterData()) {
 				console.log("TRUE");
@@ -301,6 +302,13 @@ var ViewModel = function() {
 				}
 			// Aktiviert den richtigen Marker auf der Map!
 			markers[i].setMap(map);
+=======
+			// wenn der Marker Title True mit der Eingabe ist, wird er deaktiviert
+			if(markers[i].title == self.filterData()) {
+				console.log("TRUE");
+				markers[i].setMap(null);
+
+>>>>>>> origin/master
 			}
 			
 		}
