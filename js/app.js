@@ -291,7 +291,6 @@ var ViewModel = function() {
 
 			console.log(markers[i].title);
 
-<<<<<<< HEAD
 			// wenn der Marker Title True mit der Eingabe ist, springt es in die if Schleife
 			if(markers[i].title == self.filterData()) {
 				console.log("TRUE");
