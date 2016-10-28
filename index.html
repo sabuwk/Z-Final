@@ -30,7 +30,9 @@
 
 		<h1>Hungrig in Berlin?</h1>
 		<input placeholder="Restaurant suchen!" type="search" data-bind="textInput: filterData, valueUpdate: 'input'">
-		<p id="result-p" data-bind="text: name"></p>
+		<p style="padding-top: 1em">Suche starten: <button data-bind="click: runSearch">Search!</button></p>
+		
+		
 	</div>
 </div>
 <div class="row">
@@ -39,7 +41,7 @@
 			<div data-bind="if: wahl"></div> <!-- IF WAHL -->
 			<li data-bind="text: title, click: onClick"></li>
 		</ul>
-		<button data-bind="click: runSearch">Search!</button>
+		
 	</div>
 </div>	
 

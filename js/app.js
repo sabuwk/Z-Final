@@ -304,7 +304,7 @@ var ViewModel = function() {
 
 	}
 
-
+	// gleiches wie runSearch, wir allerdings von onClick aufgerufen bei Druck auf die buttons
 	runSearchClick = function(markerx) {
 
 		// Iteriert über alle Locations
