@@ -301,6 +301,7 @@ var ViewModel = function() {
 				}
 				markers[i].setMap(map);
 				populateInfoWindow(markers[i], largeInfoWindow);
+				showWikipedia(markers[i].title)
 			}
 		}
 	}
