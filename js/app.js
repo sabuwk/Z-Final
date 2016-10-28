@@ -1,7 +1,6 @@
 var map;
 var largeInfoWindow;
 
-
 //Array für alle Marker
 var markers = [];
 
@@ -226,17 +225,16 @@ function fillLocation(locationsx) {
 
 var model = {
 
-	
+	//WAHL
 	locations: [
 
-	{title: 'Kimchi Princess', location: {lat: 52.498531, lng: 13.426031}},
-	{title: 'Tante Biggie', location: {lat: 52.50997, lng: 13.455393}},
-	{title: 'Roamers', location: {lat: 52.48553, lng: 13.429323}},
-	{title: "FamDang", location: {lat: 52.529921, lng: 13.400617}},
-	{title: "Burgermister", location: {lat: 52.499511, lng: 13.419251}}
+	{title: 'Kimchi Princess', wahl: true, location: {lat: 52.498531, lng: 13.426031}},
+	{title: 'Tante Biggie', wahl: false, location: {lat: 52.50997, lng: 13.455393}},
+	{title: 'Roamers', wahl: true, location: {lat: 52.48553, lng: 13.429323}},
+	{title: "FamDang",  wahl: true, location: {lat: 52.529921, lng: 13.400617}},
+	{title: "Burgermister", wahl: true, location: {lat: 52.499511, lng: 13.419251}}
 
 	],
-
 
 	powerhorse: function() {
 		console.log("huh");
@@ -247,26 +245,29 @@ var model = {
 
 var ViewModel = function() {
 
+	var self = this;
+
+	this.filterData = ko.observable("Search for Restaurant");
+
 	// Füllt einfach das "Ergebnisse" aus
-	this.name = ko.observable('Ergebnisse:');
+	this.name = ko.observable('Ergebnisse: ');
 
 	// Das Loc-Array wird in der For-Loop unten mit den Locations aus model.locations gefüllt und dann werden die titles in index.html hinzugefügt
 	this.loc = ko.observableArray();
+
 
 	// Diese for-Schleife füllt das Loc-Array (oben) aus. 
 	for (var z = 0; z < model.locations.length; z++) {
 		this.loc.push(model.locations[z]);
 	}
 
-
 	// onClick Function wird ausgelöst, wenn jemand auf das Nav-Bedienemelemt klickt.
 	onClick = function() {
 
 		var markerclicked;
 
-		console.log(this);
-
 		for(var i = 0; i < markers.length; i++) {
+		
 			if(this.title == markers[i].title) {
 
 				markerclicked = markers[i];
@@ -277,6 +278,42 @@ var ViewModel = function() {
 		populateInfoWindow(markerclicked, largeInfoWindow);
 
 	}
+
+	runSearch = function() {
+
+		model.locations[2].wahl = false;
+
+
+
+
+		// Iteriert über alle Locations
+		for(var i = 0; i < self.loc().length; i++) {
+
+			console.log(markers[i].title);
+
+			// wenn der Marker Title True mit der Eingabe ist, springt es in die if Schleife
+			if(markers[i].title == self.filterData()) {
+				console.log("TRUE");
+				
+				//For Loop Deaktiviert alle Marker auf der Map!
+				for(var x = 0; x < self.loc().length; x++) {
+					markers[x].setMap(null);
+				}
+			// Aktiviert den richtigen Marker auf der Map!
+			markers[i].setMap(map);
+			}
+			
+		}
+
+	}
+
+
+	disableLocations = function(aktuelleLocation) {
+
+
+
+	}
+
 
 };
 
