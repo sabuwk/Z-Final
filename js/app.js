@@ -45,7 +45,9 @@ function initMap() {
 			
 			// Lässt den Marker springen
 			marker.addListener('click', function() {
-	
+				
+				showWikipedia(this.title);
+
 				if (this.getAnimation() !== null) {
 					this.setAnimation(null);
 				} else {
@@ -63,6 +65,7 @@ function initMap() {
 			// OnClick Event für ein InfoWindow für jeden Marker
 
 			marker.addListener('click', function() {
+				
 				populateInfoWindow(this, largeInfoWindow);
 			});
 
@@ -340,6 +343,7 @@ var ViewModel = function() {
 	//shows the wikipedia info in the dom	
 	showWikipedia = function(infoLocation) {
 
+		console.log(infoLocation);
 		var wikipedia = "https://de.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=" +infoLocation; 		
 		console.log(wikipedia);
 
@@ -392,7 +396,7 @@ var ViewModel = function() {
 			}
 			markers[w].setMap(map);
 			populateInfoWindow(markers[w], largeInfoWindow);
-			showWikipedia(markers[w].title)
+			showWikipedia(markers[w].title);
 		} else {
 
 			for(var e = 0; e < self.loc().length; e++) {
