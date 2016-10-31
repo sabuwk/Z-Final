@@ -20,7 +20,7 @@
 <div class="row">
 	<div class="col-md-3 col-xs-4 rest-nav all">
 		<h1>Sightseeing in Berlin?</h1>
-		<input placeholder="Sehenswürdigkeit suchen: " type="search" data-bind="textInput: filterData">
+		<input placeholder="Sehenswürdigkeit suchen: " type="search" data-bind="value: filterData, valueUpdate: 'keyup'">
 		<p class="search-p">Suche starten: <button data-bind="click: runSearch">Search!</button></p>
 	</div>
 </div>

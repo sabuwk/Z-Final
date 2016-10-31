@@ -371,10 +371,21 @@ var ViewModel = function() {
 
 
 	}
+	
+	// LIVE SEARCH. value = eingabe im Feld
+	search = function(value) {
 
-	search = function() {
-		console.log("MOIN SEARCH");
+		//removes alle li elemente aus dem DOM
+		self.loc.removeAll();
+
+		for(var q in model.locations) {
+			if(model.locations[q].title.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
+        		self.loc.push(model.locations[q]);
+        		console.log("PUSHA: " + self.loc()[q]);
+      		}
+    	}
 	}
+
 
 	// Subscribed die filterData und führt bei jedem Eintrag die Function search aus
 	self.filterData.subscribe(search);
@@ -383,3 +394,28 @@ var ViewModel = function() {
 
 
 ko.applyBindings(new ViewModel());
+
+
+
+/*
+	search = function(value) {
+		console.log("MOIN SEARCH");
+		console.log("OBEN LOG: " + self.loc()[1].title);
+
+		//removes alle li elemente aus dem DOM
+		self.loc.removeAll();
+
+		for(var q in self.loc()) {
+			console.log("LOGGE MIR DEN TITLE: " + self.loc()[q].title);
+      		if(self.loc()[q].title.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
+        		self.loc().push(self.loc()[q]);
+      		}
+    	}
+	}
+
+	// Subscribed die filterData und führt bei jedem Eintrag die Function search aus
+	self.filterData.subscribe(search);
+
+};
+
+*/
