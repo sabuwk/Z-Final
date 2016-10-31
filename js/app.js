@@ -355,7 +355,6 @@ var ViewModel = function() {
     	    for(var id in pages) {
         		result = pages[id].extract;
         		restultTitle = pages[id].title;
-        		console.log("RESULT RESULT: " +result);
         		self.wikiExtract("Info: " + result);
         		self.wikiTitle(restultTitle);
        		}
@@ -384,7 +383,28 @@ var ViewModel = function() {
         		console.log("PUSHA: " + self.loc()[q]);
       		}
     	}
+
+    	for (var w in markers) {
+    	if(markers[w].title.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
+    		console.log("TRUE TRUE");
+			for(var x = 0; x < model.locations.length; x++) {
+					markers[x].setMap(null);
+			}
+			markers[w].setMap(map);
+			populateInfoWindow(markers[w], largeInfoWindow);
+			showWikipedia(markers[w].title)
+		} else {
+
+			for(var e = 0; e < self.loc().length; e++) {
+
+				console.log("false false");
+				//markers[e].setMap(map);
+
+			}
+
+		}  
 	}
+}
 
 
 	// Subscribed die filterData und führt bei jedem Eintrag die Function search aus
