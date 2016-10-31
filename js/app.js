@@ -42,11 +42,21 @@ function initMap() {
 				animation: google.maps.Animation.DROP,
 				id: i
 			});
+			
+			// Lässt den Marker springen
+			marker.addListener('click', function() {
+	
+				if (this.getAnimation() !== null) {
+					this.setAnimation(null);
+				} else {
+					this.setAnimation(google.maps.Animation.BOUNCE);
+		 		}
+			});
 
 			// Pusht die Marker in das Marker-Array
 			markers.push(marker);
-
-
+			
+	
 			// Extended die Boundaries der Map für jeden Marker
 			bounds.extend(marker.position);
 
@@ -70,12 +80,15 @@ function initMap() {
 
 		}
 
+
+
 		fillLocation(locations);
 		showListings();
 		// document.getElementById('show-listings').addEventListener('click', showListings);
 		// document.getElementById('hide-listings').addEventListener('click', hideListings);
 
 	}	
+
 
 
 
