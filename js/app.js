@@ -244,8 +244,8 @@ var model = {
 	{title: 'Brandenburger Tor', location: {lat: 52.516270, lng: 13.377703}},
 	{title: 'Berliner Fernsehturm', location: {lat: 52.520816, lng: 13.409548}},
 	{title: 'Siegessäule', location: {lat: 52.514547, lng: 13.350181}},
-	{title: "Berghain", location: {lat: 52.511100, lng: 13.443091}},
-	{title: "Museum für Naturkunde", location: {lat: 52.530612, lng: 13.380173}}
+	{title: 'Berghain', location: {lat: 52.511100, lng: 13.443091}},
+	{title: 'Museum für Naturkunde', location: {lat: 52.530612, lng: 13.380173}}
 
 	],
 
@@ -344,6 +344,7 @@ var ViewModel = function() {
 		console.log(wikipedia);
 
 		var result = '';
+		var restultTitle = '';
 		$.ajax({
         
             url: wikipedia,
@@ -353,8 +354,10 @@ var ViewModel = function() {
         	var pages = data.query.pages;
     	    for(var id in pages) {
         		result = pages[id].extract;
+        		restultTitle = pages[id].title;
         		console.log("RESULT RESULT: " +result);
         		self.wikiExtract("Info: " + result);
+        		self.wikiTitle(restultTitle);
        		}
 
     	})
@@ -368,6 +371,15 @@ var ViewModel = function() {
 
 
 	}
+
+	search = function() {
+		console.log("MOIN SEARCH");
+	}
+
+	// Subscribed die filterData und führt bei jedem Eintrag die Function search aus
+	self.filterData.subscribe(search);
+
 };
 
-ko.applyBindings(new ViewModel())
+
+ko.applyBindings(new ViewModel());
