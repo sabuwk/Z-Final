@@ -47,6 +47,9 @@ function initMap() {
 			marker.addListener('click', function() {
 				
 				showWikipedia(this.title);
+				for(var f = 0; f < markers.length; f++) {
+					markers[f].setAnimation(null);
+				}
 
 				if (this.getAnimation() !== null) {
 					this.setAnimation(null);
@@ -288,17 +291,18 @@ var ViewModel = function() {
 		var markerclicked;
 
 		for(var i = 0; i < markers.length; i++) {
-		
+			markers[i].setAnimation(null);
 			if(this.title == markers[i].title) {
 
 				markerclicked = markers[i];
+				markerclicked.setAnimation(google.maps.Animation.BOUNCE);
 
 			}
 		}
 
 		populateInfoWindow(markerclicked, largeInfoWindow);
 		console.log("What is this? " + this.title);
-		runSearchClick(this)
+		//runSearchClick(this)
 		showWikipedia(this.title);
 
 	}
