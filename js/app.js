@@ -391,20 +391,13 @@ var ViewModel = function() {
     	for (var w in markers) {
     	if(markers[w].title.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
     		console.log("TRUE TRUE");
-			for(var x = 0; x < model.locations.length; x++) {
-					markers[x].setMap(null);
-			}
+
 			markers[w].setMap(map);
 			populateInfoWindow(markers[w], largeInfoWindow);
 			showWikipedia(markers[w].title);
 		} else {
 
-			for(var e = 0; e < self.loc().length; e++) {
-
-				console.log("false false");
-				//markers[e].setMap(map);
-
-			}
+			markers[w].setMap(null);
 
 		}  
 	}
