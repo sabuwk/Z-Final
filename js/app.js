@@ -255,7 +255,7 @@ var ViewModel = function() {
 	this.loc = ko.observableArray();
 
 	this.wikiTitle = ko.observable("Wikipedia Info");
-	this.wikiExtract = ko.observable("");
+	this.wikiExtract = ko.observable("Alle Informationen zur Location erscheinen dann hier!");
 
 	// Diese for-Schleife füllt das Loc-Array (oben) aus. 
 	for (var z = 0; z < model.locations.length; z++) {
