@@ -3,8 +3,6 @@ var largeInfoWindow;
 
 //Array für alle Marker
 var markers = [];
-
-
 var globlocation = [];
 
 // Initializes and the map and calls a function to style it
@@ -20,8 +18,7 @@ function initMap() {
 	mapStyle();
 
 	var locations = model.locations;	
-	model.powerhorse();	
-	
+
 	largeInfoWindow = new google.maps.InfoWindow();
 	var bounds = new google.maps.LatLngBounds();
 
@@ -82,11 +79,7 @@ function initMap() {
 			marker.addListener('mouseout', function() {
 				this.setIcon(defaultIcon);
 			});
-
-
 		}
-
-
 
 		fillLocation(locations);
 		showListings();
@@ -94,9 +87,6 @@ function initMap() {
 		// document.getElementById('hide-listings').addEventListener('click', hideListings);
 
 	}	
-
-
-
 
 	function makeMarkerIcon(markerColor) {
 
@@ -110,7 +100,6 @@ function initMap() {
 	    return markerImage;
 	} 
 
-
 	function showListings() {
 		
 		var bounds = new google.maps.LatLngBounds();
@@ -123,7 +112,6 @@ function initMap() {
 
 		map.fitBounds(bounds);
 	}
-
 
 	function populateInfoWindow(marker, infowindow) {
 
@@ -141,9 +129,6 @@ function initMap() {
 			});
 		}
 	}
-
-
-
 
 function mapStyle() {
 
@@ -238,10 +223,6 @@ function fillLocation(locationsx) {
 	//console.log("ViewModel Location: " + ViewModel.loc);
 }
 
-
-
-
-
 var model = {
 
 	//WAHL
@@ -261,7 +242,6 @@ var model = {
 
 };
 
-
 var ViewModel = function() {
 
 	var self = this;
@@ -274,11 +254,8 @@ var ViewModel = function() {
 	// Das Loc-Array wird in der For-Loop unten mit den Locations aus model.locations gefüllt und dann werden die titles in index.html hinzugefügt
 	this.loc = ko.observableArray();
 
-
-
 	this.wikiTitle = ko.observable("Wikipedia Info");
 	this.wikiExtract = ko.observable("");
-
 
 	// Diese for-Schleife füllt das Loc-Array (oben) aus. 
 	for (var z = 0; z < model.locations.length; z++) {
@@ -370,14 +347,9 @@ var ViewModel = function() {
     	}).fail(function (jqXHR, textStatus) {
     		self.wikiTitle("Wikipedia Daten konnten nicht geladen werrden");
     	});
-
-
-
     }    
 
-
 	disableLocations = function(aktuelleLocation) {
-
 
 	}
 	
@@ -409,16 +381,11 @@ var ViewModel = function() {
 	}
 }
 
-
 	// Subscribed die filterData und führt bei jedem Eintrag die Function search aus
 	self.filterData.subscribe(search);
-
 };
 
-
 ko.applyBindings(new ViewModel());
-
-
 
 /*
 	search = function(value) {
