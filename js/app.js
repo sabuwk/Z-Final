@@ -367,7 +367,9 @@ var ViewModel = function() {
         		self.wikiTitle(restultTitle);
        		}
 
-    	})
+    	}).fail(function (jqXHR, textStatus) {
+    		self.wikiTitle("Wikipedia Daten konnten nicht geladen werrden");
+    	});
 
 
 
