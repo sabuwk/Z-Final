@@ -10,15 +10,6 @@ h1 {
 	font-family: "Teko", sans-serif;
 	color: #ffffff;
 	font-size: 3em;
-	text-align: center;
-}
-
-h2 {
-	
-}
-
-p {
-	
 }
 
 input {
@@ -28,32 +19,12 @@ input {
 	border: 1px solid grey;
 	background-color: #FFFFFF; 
 	height: 3em; 
-	width: 100%; 
-	text-align: center;
-
+	width: 80%; 
+	padding: 3px;
 }
 
-.nav-1 {
+.rest-nav {
 	background-color: #6caf56;
-}
-
-.nav-2 {
-	background-color: #6caf56;
-
-}
-
-.nav-3 {
-	background-color: lightgrey;
-	text-align: center;
-}
-
-.nav-4 {
-	background-color: #ffffff;
-	text-align: center;
-	min-height: 5em;
-
-	
-	
 }
 
 .result-nav {
@@ -62,9 +33,13 @@ input {
 }
 
 #map {
-	
-	
-	height: 800px;
+
+	bottom: 0px;
+	height: 100%;
+	width: 100%;
+	left: 362px;
+	position: absolute;
+	right: 0px;
 }
 
 #result-p {
@@ -76,43 +51,24 @@ input {
 }
 
 li {
+	margin-left: -3em;
+	margin-top: 1em; 
+	padding: 1em;
 	border: solid 1px grey;
+	width: 80%;
+	background-color: lightgreen; 
 	cursor: pointer;
 }
 
 .all {
 
+	margin-left: 1em;
 }
 
 p {
-	width: 80%;
-}
-
-.extract {
-
+	width: 50%;
 }
 
 .search-p {
 	padding-top: 1em;
 }
-
-.btn {
-  -webkit-border-radius: 4;
-  -moz-border-radius: 4;
-  border-radius: 4px;
-  font-family: "Open Sans", sans-serif; 
-  color: #ffffff;
-  font-size: 20px;
-  background: #318507;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
-  margin-top: 1em; 
-  margin-bottom: 1em; 
-  margin-right: 1em;
-}
-
-.btn:hover {
-  background: #32b307;
-  text-decoration: none;
-}
-
