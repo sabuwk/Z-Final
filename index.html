@@ -18,32 +18,25 @@
 <body>
 
 <div class="row">
-	<div class="col-md-12 nav-1 all">
+	<div class="col-md-3 col-xs-4 rest-nav all">
 		<h1>Sightseeing in Berlin?</h1>
+		<input placeholder="Sehenswürdigkeit suchen: " type="search" data-bind="value: filterData, valueUpdate: 'keyup'">
+		<p class="search-p">Suche starten: <button data-bind="click: runSearch">Search!</button></p>
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-12 nav-2 all">
-		<input class="myInputField" placeholder="Sehenswürdigkeit suchen: " type="search" data-bind="value: filterData, valueUpdate: 'keyup'">
-	</div>
-</div>
-	
-<div class="row">
-	<div class="col-md-12 nav-3 all">
+	<div class="col-md-3 col-xs-4 all">
 		<ul id="buttons" data-bind="foreach: loc">
-			<button class="btn" data-bind="text: title, click: onClick"></button>
+			<li data-bind="text: title, click: onClick"></li>
 		</ul>
-	</div>
-</div>
-<div class="row">
-	<div class="col-md-12 nav-4 all">
+
 		<h2 data-bind="text: wikiTitle"></h2>
-		<center><p class="extract" data-bind="text: wikiExtract"></p></center>
+		<p data-bind="text: wikiExtract"></p>
 	</div>
 </div>	
 
-<div class="row">
-	<div class="col-md-12 " id="map"></div>
+<div class="col-md-9 col-xs-8" id="map"></div>
+
 </div>
 
 
