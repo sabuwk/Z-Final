@@ -3,8 +3,6 @@ var largeInfoWindow;
 
 //Array für alle Marker
 var markers = [];
-
-
 var globlocation = [];
 
 // Initializes and the map and calls a function to style it
@@ -20,8 +18,7 @@ function initMap() {
 	mapStyle();
 
 	var locations = model.locations;	
-	model.powerhorse();	
-	
+
 	largeInfoWindow = new google.maps.InfoWindow();
 	var bounds = new google.maps.LatLngBounds();
 
@@ -47,6 +44,9 @@ function initMap() {
 			marker.addListener('click', function() {
 				
 				showWikipedia(this.title);
+				for(var f = 0; f < markers.length; f++) {
+					markers[f].setAnimation(null);
+				}
 
 				if (this.getAnimation() !== null) {
 					this.setAnimation(null);
@@ -79,11 +79,7 @@ function initMap() {
 			marker.addListener('mouseout', function() {
 				this.setIcon(defaultIcon);
 			});
-
-
 		}
-
-
 
 		fillLocation(locations);
 		showListings();
@@ -91,9 +87,6 @@ function initMap() {
 		// document.getElementById('hide-listings').addEventListener('click', hideListings);
 
 	}	
-
-
-
 
 	function makeMarkerIcon(markerColor) {
 
@@ -107,7 +100,6 @@ function initMap() {
 	    return markerImage;
 	} 
 
-
 	function showListings() {
 		
 		var bounds = new google.maps.LatLngBounds();
@@ -120,7 +112,6 @@ function initMap() {
 
 		map.fitBounds(bounds);
 	}
-
 
 	function populateInfoWindow(marker, infowindow) {
 
@@ -138,9 +129,6 @@ function initMap() {
 			});
 		}
 	}
-
-
-
 
 function mapStyle() {
 
@@ -235,10 +223,6 @@ function fillLocation(locationsx) {
 	//console.log("ViewModel Location: " + ViewModel.loc);
 }
 
-
-
-
-
 var model = {
 
 	//WAHL
@@ -258,7 +242,6 @@ var model = {
 
 };
 
-
 var ViewModel = function() {
 
 	var self = this;
@@ -271,11 +254,8 @@ var ViewModel = function() {
 	// Das Loc-Array wird in der For-Loop unten mit den Locations aus model.locations gefüllt und dann werden die titles in index.html hinzugefügt
 	this.loc = ko.observableArray();
 
-
-
 	this.wikiTitle = ko.observable("Wikipedia Info");
-	this.wikiExtract = ko.observable("");
-
+	this.wikiExtract = ko.observable("Alle Informationen zur Location erscheinen dann hier!");
 
 	// Diese for-Schleife füllt das Loc-Array (oben) aus. 
 	for (var z = 0; z < model.locations.length; z++) {
@@ -288,17 +268,18 @@ var ViewModel = function() {
 		var markerclicked;
 
 		for(var i = 0; i < markers.length; i++) {
-		
+			markers[i].setAnimation(null);
 			if(this.title == markers[i].title) {
 
 				markerclicked = markers[i];
+				markerclicked.setAnimation(google.maps.Animation.BOUNCE);
 
 			}
 		}
 
 		populateInfoWindow(markerclicked, largeInfoWindow);
 		console.log("What is this? " + this.title);
-		runSearchClick(this)
+		//runSearchClick(this)
 		showWikipedia(this.title);
 
 	}
@@ -363,15 +344,12 @@ var ViewModel = function() {
         		self.wikiTitle(restultTitle);
        		}
 
-    	})
-
-
-
+    	}).fail(function (jqXHR, textStatus) {
+    		self.wikiTitle("Wikipedia Daten konnten nicht geladen werrden");
+    	});
     }    
 
-
 	disableLocations = function(aktuelleLocation) {
-
 
 	}
 	
@@ -389,11 +367,6 @@ var ViewModel = function() {
     	}
 
     	for (var w in markers) {
-
-			for(var x = 0; x < model.locations.length; x++) {
-					markers[x].setMap(null);
-			}
-
     	if(markers[w].title.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
     		console.log("TRUE TRUE");
 
@@ -402,27 +375,17 @@ var ViewModel = function() {
 			showWikipedia(markers[w].title);
 		} else {
 
-			for(var e = 0; e < self.loc().length; e++) {
-
-				console.log("false false");
-				//markers[e].setMap(map);
-
-			}
+			markers[w].setMap(null);
 
 		}  
 	}
 }
 
-
 	// Subscribed die filterData und führt bei jedem Eintrag die Function search aus
 	self.filterData.subscribe(search);
-
 };
 
-
 ko.applyBindings(new ViewModel());
-
-
 
 /*
 	search = function(value) {
