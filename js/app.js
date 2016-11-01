@@ -389,11 +389,14 @@ var ViewModel = function() {
     	}
 
     	for (var w in markers) {
-    	if(markers[w].title.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
-    		console.log("TRUE TRUE");
+
 			for(var x = 0; x < model.locations.length; x++) {
 					markers[x].setMap(null);
 			}
+
+    	if(markers[w].title.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
+    		console.log("TRUE TRUE");
+
 			markers[w].setMap(map);
 			populateInfoWindow(markers[w], largeInfoWindow);
 			showWikipedia(markers[w].title);
