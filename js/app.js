@@ -303,7 +303,7 @@ var ViewModel = function() {
 
 		populateInfoWindow(markerclicked, largeInfoWindow);
 		console.log("What is this? " + this.title);
-		runSearchClick(this)
+		runSearchClick(this);
 		showWikipedia(this.title);
 
 	}
@@ -322,7 +322,7 @@ var ViewModel = function() {
 				}
 				markers[i].setMap(map);
 				populateInfoWindow(markers[i], largeInfoWindow);
-				showWikipedia(markers[i].title)
+				showWikipedia(markers[i].title);
 			}
 		}
 	}
