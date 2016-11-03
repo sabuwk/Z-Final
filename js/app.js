@@ -10,14 +10,20 @@ var globlocation = [];
 // Initializes and the map and calls a function to style it
 function initMap() {
 
-	map = new google.maps.Map(document.getElementById('map'), {
+	try {
+		map = new google.maps.Map(document.getElementById('map'), {
 
-	center: {lat: 52.47011, lng: 13.441893},
-	zoom: 13,
-	mapTypeControl: false
-	});
+		center: {lat: 52.47011, lng: 13.441893},
+		zoom: 13,
+		mapTypeControl: false
+		});
 
-	mapStyle();
+		mapStyle();
+	}
+	catch (error) {
+		alert("Google Maps konnte nicht geladen werden: " + error);
+	}
+
 
 	var locations = model.locations;	
 	model.powerhorse();	
@@ -357,24 +363,37 @@ var ViewModel = function() {
 
 		var result = '';
 		var restultTitle = '';
+
+		var myTimeout = setTimeout(function() {
+			resultTitle = 'SORRY!';
+			result = 'Es konnte kein Artikel gefunden werden!';
+		}, 8000);
+
+
 		$.ajax({
         
             url: wikipedia,
             dataType: "jsonp"
         }).done(function (data) {
+        	if (data && data.query && data.query.pages) {
+        		var pages = data.query.pages;
+        	} else {
+        		resultTitle = 'SORRY!';
+				result = 'Es konnte kein Artikel gefunden werden!';
+        	}
 
-        	var pages = data.query.pages;
     	    for(var id in pages) {
         		result = pages[id].extract;
         		restultTitle = pages[id].title;
         		self.wikiExtract("Info: " + result);
         		self.wikiTitle(restultTitle);
-       		}
-
+       		} 
+       		clearTimeout(myTimeout);
+    	}).fail(function() {
+    		alert("Wikipedia kann zur Zeit nicht erreicht werden");
+    		resultTitle = 'SORRY!';
+        	result = 'Wikipedia kann nicht erreich werden';
     	})
-
-
-
     }    
 
 
