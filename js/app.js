@@ -17,9 +17,8 @@ function initMap() {
 		mapTypeControl: false
 		});
 
-		mapStyle();
+	mapStyle();
 	
-
 	var locations = model.locations;	
 	model.powerhorse();	
 	
@@ -269,7 +268,7 @@ var ViewModel = function() {
 
 	var self = this;
 
-	this.filterData = ko.observable("");
+	this.filterData = ko.observable('');
 
 	// Füllt einfach das "Ergebnisse" aus
 	this.name = ko.observable('Ergebnisse: ');
@@ -279,8 +278,8 @@ var ViewModel = function() {
 
 
 
-	this.wikiTitle = ko.observable("Wikipedia Info");
-	this.wikiExtract = ko.observable("");
+	this.wikiTitle = ko.observable('Wikipedia Info');
+	this.wikiExtract = ko.observable('');
 
 
 	// Diese for-Schleife füllt das Loc-Array (oben) aus. 
@@ -379,7 +378,7 @@ var ViewModel = function() {
        		} 
        		
     	}).fail(function() {
-    		alert("Wikipedia kann zur Zeit nicht erreicht werden");
+    		alert('Wikipedia kann zur Zeit nicht erreicht werden');
     		resultTitle = 'SORRY!';
         	result = 'Wikipedia kann nicht erreich werden';
     	});
