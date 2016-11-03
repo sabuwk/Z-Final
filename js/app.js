@@ -307,7 +307,7 @@ var ViewModel = function() {
 		runSearchClick(this);
 		showWikipedia(this.title);
 
-	}
+	};
 
 	runSearch = function() {
 
@@ -326,7 +326,7 @@ var ViewModel = function() {
 				showWikipedia(markers[i].title);
 			}
 		}
-	}
+	};
 
 	// gleiches wie runSearch, wir allerdings von onClick aufgerufen bei Druck auf die buttons
 	runSearchClick = function(markerx) {
@@ -347,7 +347,7 @@ var ViewModel = function() {
 		 		
 			}
 		}
-	}
+	};
 
 	//shows the wikipedia info in the dom	
 	showWikipedia = function(infoLocation) {
@@ -382,14 +382,14 @@ var ViewModel = function() {
     		alert("Wikipedia kann zur Zeit nicht erreicht werden");
     		resultTitle = 'SORRY!';
         	result = 'Wikipedia kann nicht erreich werden';
-    	})
-    }    
+    	});
+    };    
 
 
 	disableLocations = function(aktuelleLocation) {
 
 
-	}
+	};
 	
 	// LIVE SEARCH. value = eingabe im Feld
 	search = function(value) {
@@ -423,7 +423,7 @@ var ViewModel = function() {
 			}
 		}  
 	}
-}
+};
 
 
 	// Subscribed die filterData und führt bei jedem Eintrag die Function search aus
@@ -438,7 +438,7 @@ $(document).ready(function(){
 
 	// Der Button wird mit JavaScript erzeugt und vor dem Ende des body eingebunden.
 	var back_to_top_button = ['<a href="#top" class="back-to-top">Nach oben</a>'].join("");
-	$("body").append(back_to_top_button)
+	$("body").append(back_to_top_button);
 
 	// Der Button wird ausgeblendet
 	$(".back-to-top").hide();
@@ -467,7 +467,7 @@ $(document).ready(function(){
 // Error Method!
 googleError = function() {	
 	alert("Google Maps konnte nicht geladen werden!");
-}
+};
 
 
 ko.applyBindings(new ViewModel());
