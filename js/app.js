@@ -10,8 +10,7 @@ var globlocation = [];
 // Initializes and the map and calls a function to style it
 function initMap() {
 
-	try {
-		map = new google.maps.Map(document.getElementById('map'), {
+	map = new google.maps.Map(document.getElementById('map'), {
 
 		center: {lat: 52.47011, lng: 13.441893},
 		zoom: 13,
@@ -19,11 +18,7 @@ function initMap() {
 		});
 
 		mapStyle();
-	}
-	catch (error) {
-		alert("Google Maps konnte nicht geladen werden: " + error);
-	}
-
+	
 
 	var locations = model.locations;	
 	model.powerhorse();	
@@ -274,7 +269,7 @@ var ViewModel = function() {
 
 	var self = this;
 
-	this.filterData = ko.observable("Sehenswürdigkeit suchen!");
+	this.filterData = ko.observable("");
 
 	// Füllt einfach das "Ergebnisse" aus
 	this.name = ko.observable('Ergebnisse: ');
@@ -364,12 +359,6 @@ var ViewModel = function() {
 		var result = '';
 		var restultTitle = '';
 
-		var myTimeout = setTimeout(function() {
-			resultTitle = 'SORRY!';
-			result = 'Es konnte kein Artikel gefunden werden!';
-		}, 8000);
-
-
 		$.ajax({
         
             url: wikipedia,
@@ -388,7 +377,7 @@ var ViewModel = function() {
         		self.wikiExtract("Info: " + result);
         		self.wikiTitle(restultTitle);
        		} 
-       		clearTimeout(myTimeout);
+       		
     	}).fail(function() {
     		alert("Wikipedia kann zur Zeit nicht erreicht werden");
     		resultTitle = 'SORRY!';
@@ -473,6 +462,12 @@ $(document).ready(function(){
 	});
 
 });
+
+
+// Error Method!
+googleError = function() {	
+	alert("Google Maps konnte nicht geladen werden!");
+}
 
 
 ko.applyBindings(new ViewModel());
