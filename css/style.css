@@ -13,20 +13,11 @@ h1 {
 	text-align: center;
 }
 
-h2 {
-	
-}
-
-p {
-	
-}
-
 input {
 	font-family: "Open Sans", sans-serif; 
-	font-color: white; 
 	font-size: 1em; 
 	border: 1px solid grey;
-	background-color: #FFFFFF; 
+	background-color: #ffffff; 
 	height: 3em; 
 	width: 100%; 
 	text-align: center;
@@ -51,19 +42,14 @@ input {
 	background-color: #ffffff;
 	text-align: center;
 	min-height: 5em;
-
-	
-	
 }
 
 .result-nav {
-	height: 100%
+	height: 100%;
 	background-color: red;
 }
 
-#map {
-	
-	
+#map {	
 	height: 800px;
 }
 
