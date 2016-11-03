@@ -46,6 +46,11 @@ function initMap() {
 			// Lässt den Marker springen
 			marker.addListener('click', function() {
 				
+				for(p = 0; p < markers.length; p++) {
+					markers[p].setAnimation(null);
+				}
+
+
 				showWikipedia(this.title);
 
 				if (this.getAnimation() !== null) {
@@ -333,9 +338,12 @@ var ViewModel = function() {
 			// wenn der Marker Title True mit der Eingabe ist, wird er deaktiviert
 			if(markers[i].title == markerx.title) {
 				for(var x = 0; x < self.loc().length; x++) {
-					markers[x].setMap(null);
+					markers[x].setAnimation(null);
 				}
-				markers[i].setMap(map);
+				//markers[i].setMap(map);
+
+				markers[i].setAnimation(google.maps.Animation.BOUNCE);
+		 		
 			}
 		}
 	}
@@ -388,27 +396,23 @@ var ViewModel = function() {
       		}
     	}
 
+    	//Entfernt alle Marker von der Map
+    	for(var x = 0; x < model.locations.length; x++) {
+			markers[x].setMap(null);
+		}
+
     	for (var w in markers) {
+	    	if(markers[w].title.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
+    			console.log("TRUE TRUE");
 
-			for(var x = 0; x < model.locations.length; x++) {
-					markers[x].setMap(null);
-			}
-
-    	if(markers[w].title.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
-    		console.log("TRUE TRUE");
-
-			markers[w].setMap(map);
-			populateInfoWindow(markers[w], largeInfoWindow);
-			showWikipedia(markers[w].title);
+				markers[w].setMap(map);
+				populateInfoWindow(markers[w], largeInfoWindow);
+				showWikipedia(markers[w].title);
 		} else {
-
 			for(var e = 0; e < self.loc().length; e++) {
-
 				console.log("false false");
 				//markers[e].setMap(map);
-
 			}
-
 		}  
 	}
 }
@@ -419,6 +423,9 @@ var ViewModel = function() {
 
 };
 
+
+// Credit to www.kulturbanause.de for the Code-Snipped! 
+// Scroll-Up-Button
 $(document).ready(function(){
 
 	// Der Button wird mit JavaScript erzeugt und vor dem Ende des body eingebunden.
